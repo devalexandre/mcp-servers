@@ -94,6 +94,7 @@ async def exit_server():
     return {"status": "Server will exit"}
 
 # Define the resource
+# Define the resource
 @mcp.resource("page://current")
 async def current_page() -> ResourceContents:
     """
@@ -106,7 +107,9 @@ async def current_page() -> ResourceContents:
 
     page = pages[-1]
     url = await page.evaluate('window.location.href')
-    return ResourceContents(content=TextContent(text=url,body=body), mime_type="text/plain")
+
+    # Remova o parâmetro 'body' ou defina-o adequadamente
+    return ResourceContents(content=TextContent(text=url), mime_type="text/plain")
 
 def main():
     """Main entry point for the MCP Puppeteer server."""
