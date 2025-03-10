@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 import logging
+import sys
+import os
+from os import getenv
 from contextlib import asynccontextmanager
 from typing import AsyncIterator, Dict
 from mcp.server.fastmcp import FastMCP, Context
@@ -18,8 +21,20 @@ _browser = None
 async def server_lifespan(ctx: Context) -> AsyncIterator[None]:
     """Manages the MCP server lifecycle."""
     global _browser
-    _browser = await launch()
+    args = []
+
+    # Adiciona o caminho do executável do navegador, se fornecido como variável de ambiente
+    if os.getenv("BROWSER_EXECUTABLE_PATH"):
+        args.append("--executablePath=" + os.getenv("BROWSER_EXECUTABLE_PATH"))
+
+    # Adiciona todos os argumentos passados via linha de comando
+    if len(sys.argv[1:]) > 0:  # Verifica se há argumentos adicionais
+        args.extend(sys.argv[1:])  # Usa extend() para adicionar todos os argumentos à lista
+
+    # Lança o navegador com os argumentos configurados
+    _browser = await launch(args=args)
     logger.info("Server started - browser launched")
+
     try:
         yield
     finally:
