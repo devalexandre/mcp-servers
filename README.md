@@ -2,6 +2,8 @@
 
 # MCP Servers
 
+[![smithery badge](https://smithery.ai/badge/@devalexandre/mcp-servers)](https://smithery.ai/server/@devalexandre/mcp-servers)
+
 ## Description
 
 The **MCP Servers with Pyppeteer** is a tool that allows you to control a headless browser using [Pyppeteer](https://github.com/pyppeteer/pyppeteer), enabling automated navigation, screenshot capturing, interaction with page elements, and more. This project was developed to facilitate the creation of automation servers based on the MCP (Multi-Context Protocol) framework.
@@ -29,6 +31,14 @@ Make sure you have the following installed before getting started:
 ---
 
 ## Installation
+
+### Installing via Smithery
+
+To install MCP Servers for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@devalexandre/mcp-servers):
+
+```bash
+npx -y @smithery/cli install @devalexandre/mcp-servers --client claude
+```
 
 ### Via Pip GitHub
 
