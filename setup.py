@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="mcp-server",
+    name="mcp-servers",  # Altere aqui para "mcp-servers"
     version="0.0.1",
     description="MCP Servers",
     author="Alexandre E Souza",
@@ -12,7 +12,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "mcp-server=puppeteer.puppeteer_mcp_server:main",
+            "mcp-puppeteer=puppeteer.puppeteer_mcp_server:main",
         ],
     },
 )
