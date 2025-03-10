@@ -1,4 +1,4 @@
-# MCP Servers with Pyppeteer
+# MCP Servers
 
 ## Description
 
