@@ -1,0 +1,21 @@
+version: "1"
+
+build:
+  commands:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+
+startCommand:
+  type: stdio
+  command: mcp-puppeteer
+
+configSchema:
+  type: object
+  properties:
+    PORT:
+      type: integer
+      default: 8000
+    ENVIRONMENT:
+      type: string
+      enum: ["development", "production"]
+      default: "production"
