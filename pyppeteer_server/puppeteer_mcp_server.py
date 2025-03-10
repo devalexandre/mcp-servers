@@ -21,18 +21,7 @@ _browser = None
 async def server_lifespan(ctx: Context) -> AsyncIterator[None]:
     """Manages the MCP server lifecycle."""
     global _browser
-    args = []
-
-    # Adiciona o caminho do executável do navegador, se fornecido como variável de ambiente
-    if os.getenv("BROWSER_EXECUTABLE_PATH"):
-        args.append("--executablePath=" + os.getenv("BROWSER_EXECUTABLE_PATH"))
-
-    # Adiciona todos os argumentos passados via linha de comando
-    if len(sys.argv[1:]) > 0:  # Verifica se há argumentos adicionais
-        args.extend(sys.argv[1:])  # Usa extend() para adicionar todos os argumentos à lista
-
-    # Lança o navegador com os argumentos configurados
-    _browser = await launch(args=args)
+    await launch(executablePath=os.getenv('BROWSER_EXECUTABLE_PATH'), args=sys.argv[1:])
     logger.info("Server started - browser launched")
 
     try:
