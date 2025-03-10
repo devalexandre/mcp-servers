@@ -21,7 +21,20 @@ _browser = None
 async def server_lifespan(ctx: Context) -> AsyncIterator[None]:
     """Manages the MCP server lifecycle."""
     global _browser
-    await launch(executablePath=os.getenv('BROWSER_EXECUTABLE_PATH'), args=sys.argv[1:])
+    if os.getenv('DOCKER_CONTAINER') is not None:
+        default_args = [
+               "--no-sandbox",  # Necessário para containers Docker
+               "--disable-setuid-sandbox",
+               "--disable-dev-shm-usage",  # Resolve problemas com /dev/shm em containers
+               "--disable-accelerated-2d-canvas",
+               "--disable-gpu",  # Desativa aceleração de GPU
+               "--window-size=1920,1080",  # Define tamanho da janela
+           ]
+        _browser = await launch(executablePath=os.getenv('BROWSER_EXECUTABLE_PATH'), args=default_args)
+
+    elif os.getenv('DOCKER_CONTAINER') is None:
+        _browser = await launch(executablePath=os.getenv('BROWSER_EXECUTABLE_PATH'), args=sys.argv[1:])
+
     logger.info("Server started - browser launched")
 
     try:
