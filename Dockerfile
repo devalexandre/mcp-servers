@@ -20,9 +20,6 @@ COPY . .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose port (if necessary)
-EXPOSE 8000
-
+RUN pip install -e .
 # Run the server
 CMD ["mcp-puppeteer"]
