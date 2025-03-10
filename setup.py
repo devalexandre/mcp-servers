@@ -12,7 +12,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "mcp-puppeteer=puppeteer.puppeteer_mcp_server:main",
+            "mcp-puppeteer=pyppeteer_server.puppeteer_mcp_server:main",
         ],
     },
 )
