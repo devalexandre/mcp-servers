@@ -8,7 +8,7 @@ setup(
     author_email="progsphp@gmail.com",
     packages=find_packages(),
     install_requires=[
-        "puppeteer",
+        "pyppeteer",
     ],
     entry_points={
         "console_scripts": [
