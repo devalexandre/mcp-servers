@@ -1,3 +1,5 @@
+[![smithery badge](https://smithery.ai/badge/@devalexandre/mcp-servers)](https://smithery.ai/server/@devalexandre/mcp-servers)
+
 # MCP Servers
 
 ## Description
